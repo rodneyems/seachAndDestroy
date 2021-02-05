@@ -13,7 +13,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgb(196, 166, 166);
+    background-color: rgb(172, 172, 172);
 }
 
 /* CABEÇALHO */
@@ -79,13 +79,15 @@ section{
     display: flex;
     justify-content: center;
     /* align-items: center; */
-    min-height: calc(100vh - 175px);
-    margin-top: 50px;
+    min-height: calc(100vh - 125px);
 }
 .formulario{
+    margin: 30px auto;
+    max-width: 90%;
+    position: relative;
     color: white;
     padding: 30px;
-    height: 250px;
+    height: 700px;
     border-radius: 20px;
     background-color: rgb(113, 70, 233);
     box-shadow: -2px 5px 8px 1px black;
@@ -93,7 +95,16 @@ section{
 
 
 /* Inputs */
-
+form{
+    margin-top: 30px;
+}
+h3{
+    margin: 10px 0px;
+}
+h1{
+    margin-top: 20px;
+    font-size: 30px;
+}
 .spanName{
     display: inline;
     width: 500px;
@@ -130,7 +141,6 @@ section{
 /* span #filename{
     width: 300px;
 } */
-
 #customButton2{ 
     background: rgb(247, 247, 241);
     border-radius: 5px;
@@ -147,9 +157,19 @@ section{
 }
 
 #submit{
-    width: 450px;
+    position: absolute;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: 90%;
     height: 50px;
     border-radius: 30px;
+}
+
+#submit:hover{
+    transition: all 0.5s;
+    color: white;
+    background-color: rgb(131, 94, 235);
+    border: 2px solid white;
 }
 
 /* input{
