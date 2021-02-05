@@ -19,23 +19,27 @@ function searchAndReplace(spreedSheet, filesNames){
     return new Promise((resolve)=>{
         filesNames.forEach((file) => {
             // fs.readFileSync()
-    
+            let enc = null
             // fs.readFile()
-            let data = fs.readFileSync(path.join(__dirname,'..','uploads','filesToMod',file),{encoding: 'utf-16le'})  
-                
-                console.log('teste')
+            if(file.includes('.keysets')){
+                enc = 'utf-16le'
+            }else{
+                enc = 'utf-8'
+            }
+            console.log(enc)
+            let data = fs.readFileSync(path.join(__dirname,'..','uploads','filesToMod',file),{encoding: enc})  
+            fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`NOME DO ARQUIVO ${file}` + "\n")
                 listOfChange(spreedSheet).then(values=>{
-                    // fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`NOME DO ARQUIVO ${file}` + "\n")
                     numberOfLine = 0
                     numberOfChanges = 0
-
+                    
                     const oldValue = values[0]
                     const newValue = values[1]
                     const originalData = data.split(/\r?\n/)
                     for (row of originalData){
                         numberOfLine++
                         for (let i = 0;i < oldValue.length; i++){
-                            if (row.includes(oldValue[i])){
+                            if (row.includes(oldValue[i])){                                
                                 numberOfChanges++
                                 var re = new RegExp(oldValue[i],'g')
                                 row = row.replace(re, newValue[i])
