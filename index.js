@@ -3,6 +3,7 @@ const app = express()
 const path = require('path')
 const multer = require('multer');
 const searchAndReplace = require('./functions/search.js')
+const fsExtra = require('fs-extra')
 
 let spreedSheet = null
 let filesToChange = []
@@ -36,6 +37,10 @@ app.get('/',(req, res)=>{
 
 app.post('/', upload.array('files'), (req, res) => {
     searchAndReplace(spreedSheet,filesToChange).then(()=>{
+        fsExtra.emptyDir(path.join(__dirname,'temp','files'))  
+        fsExtra.emptyDir(path.join(__dirname,'uploads','filesToMod'))  
+        fsExtra.emptyDir(path.join(__dirname,'uploads','spreedSheet'))
+        filesToChange = []
         res.download('./temp/MOD_files.zip')
     })
 });

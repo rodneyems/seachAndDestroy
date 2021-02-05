@@ -15,13 +15,17 @@ class ZipAFolder {
 }
 
 function searchAndReplace(spreedSheet, filesNames){
-
+    console.log(filesNames)
     return new Promise((resolve)=>{
         filesNames.forEach((file) => {
-            fs.readFile(path.join(__dirname,'..','uploads','filesToMod',file),{encoding: 'utf-16le'},(err, data)=>{  
+            // fs.readFileSync()
     
+            // fs.readFile()
+            let data = fs.readFileSync(path.join(__dirname,'..','uploads','filesToMod',file),{encoding: 'utf-16le'})  
+                
+                console.log('teste')
                 listOfChange(spreedSheet).then(values=>{
-                    fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`NOME DO ARQUIVO ${file}` + "\n")
+                    // fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`NOME DO ARQUIVO ${file}` + "\n")
                     numberOfLine = 0
                     numberOfChanges = 0
 
@@ -33,28 +37,24 @@ function searchAndReplace(spreedSheet, filesNames){
                         for (let i = 0;i < oldValue.length; i++){
                             if (row.includes(oldValue[i])){
                                 numberOfChanges++
-                                numberOfGlobal++
                                 var re = new RegExp(oldValue[i],'g')
                                 row = row.replace(re, newValue[i])
                                 fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`MUDANÇA DE NUMERO ${numberOfChanges} NOME DO ARQUIVO ${file} NA LINHA DE NUMERO ${numberOfLine}` + "\n")
+                                break
                             }
                         }
-                        fs.appendFileSync(path.join(__dirname,'..','temp','files','MOD_'+file),row + "\n")
+                        fs.appendFileSync(path.join(__dirname,'..','temp','files','MOD_'+file),row + "\n",{encoding: 'utf-16le'})
+                    }
+                    numberOfGlobal++
+                    if (numberOfGlobal == filesNames.length){                        
+                        ZipAFolder.main().then(()=>{
+                            console.log('fim')
+                            numberOfGlobal = 0
+                            resolve() 
+                        })
                     }
                     })
-                }
-                )
-            })
-            setInterval(() => {                
-                ZipAFolder.main().then(()=>{
-                    resolve()
-                        setInterval(() => {   
-                            fsExtra.emptyDir(path.join(__dirname,'..','temp','files'))  
-                            fsExtra.emptyDir(path.join(__dirname,'..','uploads','filesToMod'))  
-                            fsExtra.emptyDir(path.join(__dirname,'..','uploads','spreedSheet'))  
-                        }, 5000);
-                })
-            }, 10000);
+            })               
     })
 }
 
