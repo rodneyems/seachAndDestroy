@@ -7,7 +7,43 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <h1>Hello World</h1>
+    <header>
+        <div class="wrapper">
+            <a href="#"><img src="./imgs/logo.png" alt="logo" class="logo" width="70px"></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Instruções</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="formulario">
+            <form action="/" enctype="multipart/form-data" method="post">
+                <h3>Selecione a planilha</h3>
+                <input id="fileUpload" type="file" required name="files">
+                <div class="spanName">
+                <span id="fileName">Nenhum arquivo selecionado</span> 
+
+                <div id="customButton">Selecione o arquivo</div>
+                <br>
+                <br>
+                <h3>Selecione a planilha</h3>
+                <input id="fileUpload2" type="file" name="files" required multiple>
+                <div class="spanName">
+                    <span id="fileName2">Nenhum arquivo selecionado</span> 
+                </div>
+                <div id="customButton2">Selecione o arquivo</div>   
+                <br>
+                <br>
+                <input id="submit" type="submit" value="Upload">
+            </form> 
+        </div>
+    </section>
+    <footer>
+        SAUD - SUPORTE ESPECIALISTA DE ÁUDIO
+    </footer>
 <script src="./scripts/scripts.js"></script>
 </body>
 </html>

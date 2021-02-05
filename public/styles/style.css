@@ -1,8 +1,169 @@
+@font-face{
+    font-family: 'Montserrat Alternates';
+    src: url('./font/MontserratAlternates-Medium.ttf');
+    /* src: url('./font/MontserratAlternates-Medium.ttf') format('truetype'); */
+    font-weight: normal;
+    font-style: normal;
+}
+
 *{
+    font-family: 'Montserrat Alternates', sans-serif;
     margin: 0;
     padding: 0;
-    color: white;
+    box-sizing: border-box;
 }
 body{
-    background-color: black;
+    background-color: rgb(196, 166, 166);
+}
+
+/* CABEÇALHO */
+header{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    background-color: rgb(113, 70, 233);
+    box-shadow: 5px 5px 10px 5px white;
+}
+.logo{
+    background-color: white;
+    border-radius: 50%;
+}
+.wrapper{
+    max-width: 1200px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+li{
+    position: relative;
+    margin-left: 15px;
+    font-size: 20px;
+    transition: all 1s;
+}
+
+li a::after{
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    bottom: -4px;
+}
+li a:hover{
+    font-weight: 700;
+}
+li a:hover::after{
+    width: 100%;
+    transition: width 200ms ease-out;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+/* CONTENT */
+
+section{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    min-height: calc(100vh - 175px);
+    margin-top: 50px;
+}
+.formulario{
+    color: white;
+    padding: 30px;
+    height: 250px;
+    border-radius: 20px;
+    background-color: rgb(113, 70, 233);
+    box-shadow: -2px 5px 8px 1px black;
+}
+
+
+/* Inputs */
+
+.spanName{
+    display: inline;
+    width: 500px;
+    height: 50px;
+    content: "";
+}
+
+#fileUpload{
+    display: none;
+}
+
+/* span #filename{
+    width: 300px;
+} */
+
+#customButton{ 
+    background: rgb(247, 247, 241);
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(3, 3, 3);
+}
+#customButton:hover{
+    transition: all 0.5s;
+    color: white;
+    background-color: rgb(131, 94, 235);
+
+}
+#fileUpload2{
+    display: none;
+}
+
+/* span #filename{
+    width: 300px;
+} */
+
+#customButton2{ 
+    background: rgb(247, 247, 241);
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(3, 3, 3);
+}
+#customButton2:hover{
+    transition: all 0.5s;
+    color: white;
+    background-color: rgb(131, 94, 235);
+
+}
+
+#submit{
+    width: 450px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+/* input{
+    width: 300px;
+} */
+
+/* RODAPE */
+footer{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    color: white;
+    height: 50px;
+    background-color: rgb(113, 70, 233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
