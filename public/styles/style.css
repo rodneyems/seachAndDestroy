@@ -108,14 +108,23 @@ h1{
     margin-top: 20px;
     font-size: 30px;
 }
-
+.inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .spanName{
-    display: inline-block;
-    background-color: black;
-    width: 246px;
-    height: 29px;
+    width: 60%;
     overflow: hidden;
-    display: inline-block;
+    text-align: left;
+}
+
+span{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
 }
 
 #fileUpload{

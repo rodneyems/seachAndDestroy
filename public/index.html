@@ -26,16 +26,16 @@
             <form action="/" enctype="multipart/form-data" method="post">
                 <div>
                     <h3>Selecione a planilha</h3>
-                    <div>
-                        <input id="fileUpload" type="file" required name="files">
+                    <div class="inputs">
+                        <input id="fileUpload" type="file" name="files" oninvalid="alert('Por favor, preencha todos os campos')" required>
                         <div class="spanName">
                             <span id="fileName">Nenhum arquivo selecionado</span> 
                         </div>
                         <div id="customButton">Selecione o arquivo</div>
                     </div>
                     <h3>Selecione os arquivos para modificar</h3>
-                    <div>
-                        <input id="fileUpload2" type="file" name="files" required multiple>
+                    <div class="inputs">
+                        <input id="fileUpload2" type="file" name="files" multiple oninvalid="alert('Por favor, preencha todos os campos')" required>
                         <div class="spanName">
                             <span id="fileName2">Nenhum arquivo selecionado</span> 
                         </div>
