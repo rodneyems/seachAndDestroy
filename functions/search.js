@@ -15,18 +15,14 @@ class ZipAFolder {
 }
 
 function searchAndReplace(spreedSheet, filesNames){
-    console.log(filesNames)
     return new Promise((resolve)=>{
         filesNames.forEach((file) => {
-            // fs.readFileSync()
             let enc = null
-            // fs.readFile()
             if(file.includes('.keysets')){
                 enc = 'utf-16le'
             }else{
                 enc = 'utf-8'
             }
-            console.log(enc)
             let data = fs.readFileSync(path.join(__dirname,'..','uploads','filesToMod',file),{encoding: enc})  
             fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`NOME DO ARQUIVO ${file}` + "\n")
                 listOfChange(spreedSheet).then(values=>{
@@ -52,7 +48,6 @@ function searchAndReplace(spreedSheet, filesNames){
                     numberOfGlobal++
                     if (numberOfGlobal == filesNames.length){                        
                         ZipAFolder.main().then(()=>{
-                            console.log('fim')
                             numberOfGlobal = 0
                             resolve() 
                         })
