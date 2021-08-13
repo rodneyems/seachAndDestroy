@@ -39,11 +39,11 @@ function searchAndReplace(spreedSheet, filesNames){
                                 numberOfChanges++
                                 var re = new RegExp(oldValue[i],'g')
                                 row = row.replace(re, newValue[i])
-                                fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`MUDANÇA DE NUMERO ${numberOfChanges} NOME DO ARQUIVO ${file} NA LINHA DE NUMERO ${numberOfLine}` + "\n")
+                                fs.appendFileSync(path.join(__dirname,'..','temp','files','log.txt'),`MUDANÇA DE NUMERO ${numberOfChanges} NOME DO ARQUIVO ${file} NA LINHA DE NUMERO ${numberOfLine} DE ${oldValue[i]} PARA ${newValue[i]}` + "\n")
                                 break
                             }
                         }
-                        fs.appendFileSync(path.join(__dirname,'..','temp','files','MOD_'+file),row + "\n",{encoding: 'utf-16le'})
+                        fs.appendFileSync(path.join(__dirname,'..','temp','files','MOD_'+file),row + "\n",{encoding: enc})
                     }
                     numberOfGlobal++
                     if (numberOfGlobal == filesNames.length){                        
